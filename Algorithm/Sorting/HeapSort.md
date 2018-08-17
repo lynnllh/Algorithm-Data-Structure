@@ -1,26 +1,31 @@
 #堆排序算法
 ##算法原理
+* 堆排序的时间复杂度O(nlgn)
+* 堆排序是原址排序，只需要常数个额外的元素空间存储临时数据
+* 堆是一个数组，数组的排列是二叉树的形式，可以看成一个近似的完成二叉树，除了最底层外，其它层都是满的，而且从左
+向右填充。树上的每一个结点对应数组中的一个元素或者对象。二叉堆一般分成两个形式：最大堆和最小堆，最大堆的根节点比
+子节点大，最小堆的根节点比子节点小。维护这样一个二叉堆就能利用最大堆或者最小堆的性质来快速排序。
 
 ##伪代码实现
-* PARENT
+* PARENT //求取父节点下标
 ```
 PARENT(i)
 	return floor(i/2)
 ```
 -----------
-* LEFT
+* LEFT //求取左子树下标
 ```
 LEFT(i)
 	return 2i
 ```
 ----------
-* RIGHT
+* RIGHT //求取右子树下标
 ```
 RIGHT(i)
 	return 2i+1
 ```
 ------------
-* MAX_HEAPIFY
+* MAX_HEAPIFY //时间复杂度O(lgn)，是维护最大堆性质的关键
 ```
 MAX_HEAPIFY(A,i)
 	l=LEFT(i)
@@ -36,7 +41,7 @@ MAX_HEAPIFY(A,i)
 		MAX_HEAPIFY(A,largest)
 ```
 ---------------
-* BUILD\_MAX_HEAP
+* BUILD\_MAX_HEAP //具有线性时间复杂度，功能是从无序的数组构造一个最大堆
 ```
 BUILD_MAX_HEAP(A)
 	A.heap_size=A.length
@@ -44,7 +49,7 @@ BUILD_MAX_HEAP(A)
 		MAX_HEAPIFY(A,i)
 ```
 -----------------
-* HEAPSORT
+* HEAPSORT //时间复杂度O(nlgn)，功能是对一个数组进行原址排序
 ```
 HEAPSORT(A)
 	BUILD_MAX_HEAP(A)
